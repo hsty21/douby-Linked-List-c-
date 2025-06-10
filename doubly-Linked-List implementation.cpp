@@ -145,11 +145,11 @@ class doublyLinkedList{
             count--;
         }
         void update(int k, int d2){
-            if(keyExist(k)==nullptr){
+            Node* current = keyExist(k);
+            if(current==nullptr){
                 std::cout<< "The key node you are looking for doesnt exist in the list"<<std::endl;
                 return;
             }
-            Node* current = keyExist(k);
             current->data = d2;
         }
         int Count(){
@@ -163,15 +163,6 @@ class doublyLinkedList{
                 temp = temp->next;
             }
             std::cout<< " NULL"<<std::endl;
-        }
-        void displayBackward(){
-            Node* temp = tail;
-            std::cout<< "NULL-->";
-            while(temp!=nullptr){
-                std::cout<<" ("<<temp->key<< " , "<<temp->data<<" )-->"; 
-                temp = temp->prev;
-            }
-            std::cout<< " Head"<<std::endl;
         }
         void reverse(){
             int size = count;
@@ -340,8 +331,6 @@ int main(){
             case 9:
                 std::cout<< "Displayed Forward: ";
                 d.displayForward();
-                /*std::cout<< "Displayed Backward: ";
-                d.displayBackward();*/
                 break;
             case 10:
                 d.reverse();
